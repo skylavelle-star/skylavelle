@@ -1,8 +1,8 @@
 # CLAUDE.md - Sky Lavelle Website
 
-Project root: `/Users/skylavelle/Claude/Code/Sky Lavelle`
+Project root: `/Users/skylavelle/Claude/Portfolio/Sky Lavelle`
 Live URL: https://skylavelle.com.au
-Vercel project: `lavelle-com-au` under `sky-lavelles-projects`
+Vercel project: `skylavelle` under `sky-lavelles-projects`
 
 ## Tech stack
 
@@ -139,9 +139,16 @@ All buy links need `class="lemonsqueezy-button"` for the overlay to trigger.
 
 ## Deployment
 
-```bash
-vercel --prod --yes
-```
+**Pipeline:** Local → GitHub → Vercel → Live
+
+| Step | Value |
+|---|---|
+| Local directory | `/Users/skylavelle/Claude/Portfolio/Sky Lavelle` |
+| GitHub repo | `github.com/skylavelle-star/skylavelle` |
+| Vercel project | `skylavelle` |
+| Live site | `https://skylavelle.com.au` |
+
+Deploy by committing changes and running `git push origin main`. Vercel builds and publishes automatically (~13s). Never use `vercel --prod --yes` — the GitHub integration handles all deploys.
 
 Vercel reads `vercel.json` for cache headers. After any Lemon Squeezy or Beehiiv config change, also update Vercel env vars:
 
