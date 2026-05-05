@@ -24,7 +24,6 @@ npm run build        # astro build + pagefind index
 npm run pagefind     # run pagefind alone (needs dist/ to exist)
 npm run lint         # eslint
 npm run format       # prettier
-vercel --prod --yes  # deploy to production (run from project root)
 ```
 
 ## Directory structure
@@ -51,6 +50,7 @@ public/
 docs/
   commercial-funnel.md
   content-strategy.md
+  web-strategy.md
 ```
 
 ## Active components
@@ -63,6 +63,7 @@ docs/
 | `Footer.astro` | Layout |
 | `Header.astro` | Layout |
 | `Hero.astro` | service detail pages, contact, newsletter, free-tools |
+| `RelatedResourceCTA.astro` | article pages |
 | `SearchBox.astro` | articles/index |
 | `SEO.astro` | Layout |
 
