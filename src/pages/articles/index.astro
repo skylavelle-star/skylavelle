@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import SearchBox from '../../components/SearchBox.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const sorted = allArticles.sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+
+const categories = [...new Set(sorted.map((a) => a.data.category))];
+---
+
+<Layout
+  title="Articles | Enterprise Project Management Guides"
+  description="Practical guides for senior project managers and technology leaders. Project recovery, business case development, procurement governance and executive reporting."
+>
+  <Hero
+    heading="Articles"
+    subheading="Practical guides for project managers and technology leaders working in enterprise delivery environments."
+    compact
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <!-- Main articles -->
+        <div class="lg:col-span-3">
+          {
+            sorted.length > 0 ? (
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {sorted.map((article) => (
+                  <ArticleCard
+                    title={article.data.title}
+                    description={article.data.description}
+                    href={`/articles/${article.id}`}
+                    publishDate={article.data.publishDate}
+                    category={article.data.category}
+                    featured={article.data.featured}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p class="text-warm-700">No articles published yet.</p>
+            )
+          }
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-8">
+          <div>
+            <h2 class="text-sm font-semibold text-warm-900 uppercase tracking-wider mb-4">
+              Search
+            </h2>
+            <SearchBox />
+          </div>
+
+          {
+            categories.length > 0 && (
+              <div>
+                <h2 class="text-sm font-semibold text-warm-900 uppercase tracking-wider mb-4">
+                  Categories
+                </h2>
+                <ul class="space-y-1.5">
+                  {categories.map((category) => (
+                    <li>
+                      <span class="text-sm text-warm-700 cursor-default">{category}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          <div class="rounded-lg border border-warm-200 p-5 bg-warm-50">
+            <h2 class="text-sm font-semibold text-warm-900 mb-2">Free resources</h2>
+            <p class="text-xs text-warm-700 mb-3">
+              Download free checklists and guides for project recovery, business cases and procurement.
+            </p>
+            <a
+              href="/resources"
+              class="inline-flex text-xs font-medium text-ochre-600 hover:text-warm-900 underline"
+            >
+              View free resources
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>

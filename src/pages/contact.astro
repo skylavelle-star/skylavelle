@@ -1,0 +1,381 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+  title="Contact | Senior Advisory Enquiry"
+  description="Enquire about project recovery, enterprise technology delivery, procurement governance, business case development or steering committee reporting advisory support."
+>
+  <Hero
+    heading="Send an Enquiry"
+    subheading="Describe your situation and what you need. An initial response will come within one business day."
+    compact
+  />
+
+  <!-- Advisory offer cards -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="max-w-xl mb-8">
+        <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-2">Productised advisory</p>
+        <h2 class="text-2xl font-bold text-warm-900 mb-2">Fixed-Scope Review Engagements</h2>
+        <p class="text-warm-700">Structured advisory reviews with a defined scope and a written output. Useful when you need an expert assessment quickly.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+        {[
+          {
+            title: 'Project Recovery Review',
+            from: '$1,500',
+            includes: [
+              '60-minute discovery call',
+              'Review of project artefacts',
+              'Written recovery assessment',
+              'Top 10 recommended actions',
+              'Executive-ready summary',
+            ],
+            href: '/contact?service=project-recovery-review',
+          },
+          {
+            title: 'Business Case Review',
+            from: '$950',
+            includes: [
+              'Review of business case structure',
+              'Review of benefits, risk and governance logic',
+              'Recommendations to improve approval readiness',
+            ],
+            href: '/contact?service=business-case-review',
+          },
+          {
+            title: 'Procurement Evaluation Review',
+            from: '$1,250',
+            includes: [
+              'Review of evaluation approach',
+              'Review of scoring structure',
+              'Review of clarification and BAFO approach',
+              'Probity and governance recommendations',
+            ],
+            href: '/contact?service=procurement-review',
+          },
+        ].map((offer) => (
+          <div class="flex flex-col p-6 rounded-lg border border-warm-200 bg-white">
+            <h3 class="text-base font-semibold text-warm-900 mb-1">{offer.title}</h3>
+            <p class="text-2xl font-bold text-warm-900 mb-4">
+              From {offer.from} <span class="text-sm font-normal text-warm-700">AUD</span>
+            </p>
+            <ul class="space-y-1.5 flex-1 mb-5">
+              {offer.includes.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-warm-700">
+                  <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#enquiry-form"
+              class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+              data-ga-event="advisory_offer_click"
+              data-ga-label={offer.title}
+              onclick={`document.getElementById('engagement-type').value = '${offer.href.split('=')[1]}'; return true;`}
+            >
+              Discuss An Advisory Review
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="text-sm text-warm-700">Prices are indicative. Final scope and fee are agreed before any work begins. Use the enquiry form below.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Form -->
+        <div class="lg:col-span-2">
+          <form
+            id="enquiry-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-6"
+            novalidate
+          >
+            <input type="hidden" name="access_key" value="dc7b04fa-6e86-415e-8d01-1fe332b4bf21" />
+            <input type="hidden" name="subject" value="New advisory enquiry - skylavelle.com.au" />
+            <input type="hidden" name="from_name" value="Sky Lavelle Contact Form" />
+            <!-- Honeypot spam prevention -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium text-warm-800 mb-1.5">
+                  Name <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                  class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-warm-800 mb-1.5">
+                  Email <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors"
+                  placeholder="you@organisation.com.au"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="organisation" class="block text-sm font-medium text-warm-800 mb-1.5">
+                  Organisation
+                </label>
+                <input
+                  type="text"
+                  id="organisation"
+                  name="organisation"
+                  autocomplete="organization"
+                  class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors"
+                  placeholder="Your organisation"
+                />
+              </div>
+
+              <div>
+                <label for="role" class="block text-sm font-medium text-warm-800 mb-1.5">
+                  Your role
+                </label>
+                <input
+                  type="text"
+                  id="role"
+                  name="role"
+                  class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors"
+                  placeholder="e.g. Program Manager, CIO, PMO Lead"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="engagement-type" class="block text-sm font-medium text-warm-800 mb-1.5">
+                Type of engagement
+              </label>
+              <select
+                id="engagement-type"
+                name="engagement_type"
+                class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors bg-white"
+              >
+                <option value="">Select an engagement type</option>
+                <option value="project-recovery">Project Recovery</option>
+                <option value="enterprise-delivery">Enterprise Technology Delivery</option>
+                <option value="procurement">Procurement and Governance</option>
+                <option value="business-case">Business Case Development</option>
+                <option value="steering-committee">Steering Committee Reporting</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="project-context" class="block text-sm font-medium text-warm-800 mb-1.5">
+                Project context
+              </label>
+              <textarea
+                id="project-context"
+                name="project_context"
+                rows="3"
+                class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors resize-vertical"
+                placeholder="Brief description of the program or situation - technology type, scale, current state"
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="timeframe" class="block text-sm font-medium text-warm-800 mb-1.5">
+                Timeframe
+              </label>
+              <select
+                id="timeframe"
+                name="timeframe"
+                class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors bg-white"
+              >
+                <option value="">Select a timeframe</option>
+                <option value="immediate">Immediate - within the next two weeks</option>
+                <option value="month">Within the next month</option>
+                <option value="quarter">Within the next quarter</option>
+                <option value="planning">Planning ahead - no fixed start</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-warm-800 mb-1.5">
+                Message <span class="text-red-500" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full px-4 py-2.5 text-sm border border-warm-200 rounded-md focus:outline-none focus:ring-2 focus:ring-ochre-600 focus:border-transparent transition-colors resize-vertical"
+                placeholder="Describe what you need and any relevant context. The more specific, the better."
+              ></textarea>
+            </div>
+
+            <!-- Success message (hidden until form submitted) -->
+            <div
+              id="form-success"
+              class="hidden flex items-start gap-3 p-4 rounded-lg bg-emerald-50 border border-emerald-200"
+              role="alert"
+            >
+              <svg class="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-sm text-emerald-800">
+                <strong>Enquiry sent.</strong> You will receive a response within one business day.
+              </p>
+            </div>
+
+            <!-- Error message (hidden until needed) -->
+            <div
+              id="form-error"
+              class="hidden flex items-start gap-3 p-4 rounded-lg bg-red-50 border border-red-200"
+              role="alert"
+            >
+              <svg class="w-5 h-5 text-red-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-sm text-red-800" id="form-error-text">
+                Something went wrong. Please try again.
+              </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <button
+                id="submit-btn"
+                type="submit"
+                class="inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <span id="submit-label">Send enquiry</span>
+                <svg
+                  id="submit-spinner"
+                  class="hidden w-4 h-4 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-xs text-warm-700">
+              Fields marked with * are required. Your information will not be shared with third parties.
+            </p>
+          </form>
+        </div>
+
+        <!-- Sidebar info -->
+        <aside class="space-y-6">
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-4">What to include</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'The type of program or situation (data migration, cloud uplift, CRM, etc.)',
+                  'The approximate scale - budget envelope and team size if known',
+                  'The current delivery state - is this a new program or one that needs recovery?',
+                  'What you specifically need - advisory, a deliverable, or something else',
+                  'The timeframe - when do you need to move?',
+                ].map((tip) => (
+                  <li class="flex items-start gap-2.5 text-sm text-warm-700">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {tip}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-2">Response time</h2>
+            <p class="text-sm text-warm-700">
+              All enquiries receive a response within one business day. For urgent situations, note that in your message.
+            </p>
+          </div>
+
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-2">Based in Australia</h2>
+            <p class="text-sm text-warm-700">
+              Sky Lavelle is based in Australia and works with clients across state and federal government, financial services, utilities and higher education. Remote and on-site engagements.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('enquiry-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitLabel = document.getElementById('submit-label') as HTMLSpanElement;
+  const submitSpinner = document.getElementById('submit-spinner') as SVGElement;
+  const successMsg = document.getElementById('form-success') as HTMLDivElement;
+  const errorMsg = document.getElementById('form-error') as HTMLDivElement;
+  const errorText = document.getElementById('form-error-text') as HTMLParagraphElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'Sending...';
+    submitSpinner.classList.remove('hidden');
+    successMsg.classList.add('hidden');
+    errorMsg.classList.add('hidden');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        if (typeof window.gtag === 'function') window.gtag('event', 'contact_form_submit');
+        window.location.href = '/thank-you/contact/';
+        return;
+      } else {
+        errorText.innerHTML =
+          data.message ||
+          'Something went wrong. Please try again.';
+        errorMsg.classList.remove('hidden');
+      }
+    } catch {
+      errorText.innerHTML =
+        'Something went wrong. Please try again.';
+      errorMsg.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Send enquiry';
+      submitSpinner.classList.add('hidden');
+    }
+  });
+</script>

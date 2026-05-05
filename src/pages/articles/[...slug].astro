@@ -1,0 +1,252 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RelatedResourceCTA from '../../components/RelatedResourceCTA.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+
+const formattedDate = entry.data.publishDate.toLocaleDateString('en-AU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const updatedDate = entry.data.updatedDate
+  ? entry.data.updatedDate.toLocaleDateString('en-AU', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
+  : null;
+
+const beehiivSignupUrl = import.meta.env.PUBLIC_BEEHIIV_SIGNUP_URL || '/newsletter';
+---
+
+<Layout
+  title={entry.data.seoTitle || entry.data.title}
+  description={entry.data.seoDescription || entry.data.description}
+>
+  <article data-pagefind-body>
+    <!-- Article header -->
+    <header class="bg-warm-950 text-white py-14 lg:py-20">
+      <div class="container">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <a
+              href="/articles"
+              class="text-sm text-warm-200 hover:text-white transition-colors"
+            >
+              Articles
+            </a>
+            <span class="text-warm-700" aria-hidden="true">/</span>
+            {
+              entry.data.category && (
+                <span class="text-sm text-warm-200">{entry.data.category}</span>
+              )
+            }
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+            {entry.data.title}
+          </h1>
+          <p class="text-lg text-warm-200 mb-6">{entry.data.description}</p>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-warm-200/70">
+            <time datetime={entry.data.publishDate.toISOString()}>
+              Published {formattedDate}
+            </time>
+            {
+              updatedDate && (
+                <span>
+                  Updated{' '}
+                  <time datetime={entry.data.updatedDate?.toISOString()}>{updatedDate}</time>
+                </span>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article body -->
+    <div class="section">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+          <!-- Content -->
+          <div class="lg:col-span-3">
+            <div class="prose prose-stone max-w-none
+              prose-headings:font-semibold prose-headings:text-warm-900
+              prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+              prose-p:text-warm-800 prose-p:leading-relaxed
+              prose-a:text-ochre-600 prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-warm-900
+              prose-ul:text-warm-800 prose-ol:text-warm-800
+              prose-li:leading-relaxed
+              prose-blockquote:border-l-4 prose-blockquote:border-ochre-600 prose-blockquote:bg-warm-100 prose-blockquote:p-4 prose-blockquote:rounded-r-md
+              prose-code:text-ochre-700 prose-code:bg-warm-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+              prose-hr:border-warm-200">
+              <Content />
+            </div>
+
+            <!-- Per-article related resource (opt-in via frontmatter) -->
+            {entry.data.relatedResource && (
+              <RelatedResourceCTA
+                title={entry.data.relatedResource.title}
+                description={entry.data.relatedResource.description}
+                url={entry.data.relatedResource.url}
+              />
+            )}
+
+            <!-- Inline CTA -->
+            <aside class="my-10 rounded-lg border border-warm-200 bg-warm-100 p-5">
+              <h2 class="text-sm font-semibold text-warm-900 mb-1">Practical PMO templates and delivery resources</h2>
+              <p class="text-xs text-warm-800 mb-3 leading-relaxed">
+                For practical PMO templates and delivery resources, visit Lavelle Pty Ltd Resources.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <a
+                  href="https://lavelleptyltd.com.au/pmo-resources"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-ga-event="product_view"
+                  class="inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors"
+                >
+                  Browse PMO Resources
+                  <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <a
+                  href="https://lavelleptyltd.com.au/free-tools"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-ga-event="resource_download_click"
+                  class="inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors"
+                >
+                  Free Tools
+                  <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </aside>
+
+            <!-- Tags -->
+            {
+              entry.data.tags && entry.data.tags.length > 0 && (
+                <div class="mt-10 pt-6 border-t border-warm-200">
+                  <div class="flex flex-wrap gap-2">
+                    {entry.data.tags.map((tag: string) => (
+                      <span class="text-xs font-medium text-warm-700 bg-warm-100 px-2.5 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
+
+            <!-- Back link -->
+            <div class="mt-8">
+              <a
+                href="/articles"
+                class="inline-flex items-center gap-1 text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to articles
+              </a>
+            </div>
+
+            <!-- Newsletter signup -->
+            <div class="mt-10 rounded-lg bg-warm-950 p-6">
+              <h2 class="text-base font-semibold text-white mb-2">The Project Recovery Brief</h2>
+              <p class="text-sm text-warm-200 leading-relaxed mb-4">
+                Practical guidance for project managers and technology leaders working through difficult delivery.
+              </p>
+              <a
+                href={beehiivSignupUrl}
+                data-ga-event="newsletter_signup_click"
+                class="inline-flex items-center px-4 py-2.5 text-sm font-medium text-warm-900 bg-white hover:bg-warm-100 rounded-md transition-colors"
+              >
+                Subscribe free
+              </a>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="space-y-6">
+            {
+              headings.length > 1 && (
+                <div class="rounded-lg border border-warm-200 p-5 sticky top-24">
+                  <h2 class="text-xs font-semibold text-warm-700 uppercase tracking-wider mb-3">
+                    On this page
+                  </h2>
+                  <nav aria-label="Table of contents">
+                    <ul class="space-y-1.5">
+                      {headings
+                        .filter((h) => h.depth <= 3)
+                        .map((heading) => (
+                          <li>
+                            <a
+                              href={`#${heading.slug}`}
+                              class:list={[
+                                'text-sm text-warm-700 hover:text-ochre-600 transition-colors leading-snug block',
+                                heading.depth === 3 ? 'pl-3' : '',
+                              ]}
+                            >
+                              {heading.text}
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                  </nav>
+                </div>
+              )
+            }
+
+            <div class="rounded-lg border border-warm-200 bg-warm-100 p-5">
+              <h2 class="text-sm font-semibold text-warm-900 mb-2">Need advisory support?</h2>
+              <p class="text-xs text-warm-800 mb-3 leading-relaxed">
+                If you are dealing with a situation like the one described in this article, an enquiry is a good place to start.
+              </p>
+              <a
+                href="/contact"
+                class="inline-flex text-xs font-medium text-white bg-warm-800 hover:bg-warm-900 px-3 py-2 rounded-md transition-colors"
+              >
+                Send an enquiry
+              </a>
+            </div>
+
+            <div class="rounded-lg border border-warm-200 p-5">
+              <h2 class="text-sm font-semibold text-warm-900 mb-2">About the author</h2>
+              <p class="text-xs text-warm-700 mb-3 leading-relaxed">
+                Sky Lavelle is a senior project delivery consultant. He runs <a href="https://lavelleptyltd.com.au" target="_blank" rel="noopener noreferrer" class="text-ochre-600 hover:text-ochre-700 underline">Lavelle Pty Ltd</a>, where PMO resources, templates and consulting enquiries are managed.
+              </p>
+              <a
+                href="https://linkedin.com/in/skylavelle"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-medium text-ochre-600 hover:text-ochre-700 transition-colors"
+              >
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                linkedin.com/in/skylavelle
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

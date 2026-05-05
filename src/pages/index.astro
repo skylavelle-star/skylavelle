@@ -1,0 +1,356 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/hero.jpg';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const featuredArticles = allArticles
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+
+const leadArticle = featuredArticles[0];
+const restArticles = featuredArticles.slice(1);
+
+const formatDate = (date) =>
+  date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const proofBar = [
+  '20+ years working in enterprise technology delivery',
+  'Sectors: government, higher education, media and not-for-profit',
+  'Recovery, procurement, business cases and steering committee reporting',
+  'Based in Australia',
+];
+
+const services = [
+  {
+    title: 'Project Recovery',
+    problem: 'When a program has stalled or lost credibility, the first job is an honest assessment of where it actually is - not where the status reports say it is.',
+    outcome: 'I run a structured recovery process: assessment, stakeholder reset, replan and governance changes that hold.',
+    href: '/services/project-recovery',
+  },
+  {
+    title: 'Enterprise Technology Delivery',
+    problem: 'Complex multi-vendor programs need someone running the program end-to-end, not just chairing meetings.',
+    outcome: 'I lead delivery across data, cloud, cybersecurity, content management and CRM environments.',
+    href: '/services/enterprise-technology-delivery',
+  },
+  {
+    title: 'Procurement Governance',
+    problem: 'Restricted tenders and large technology acquisitions need a process that holds up to probity review and delegate scrutiny.',
+    outcome: 'I design evaluation frameworks, run BAFO and produce the documentation delegates actually need to approve.',
+    href: '/services/procurement-and-governance',
+  },
+  {
+    title: 'Business Case Development',
+    problem: 'A business case has to survive Treasury review, board scrutiny or delegate approval - often all three.',
+    outcome: 'I write rigorous cases with proper options analysis, financial modelling and the supporting documentation that gets investments approved.',
+    href: '/services/business-case-development',
+  },
+  {
+    title: 'Steering Committee Reporting',
+    problem: 'Most steering committee reports tell the committee what people want them to hear. That is not useful.',
+    outcome: 'I build reporting frameworks that surface actual project health, real risks and the decisions the committee needs to make.',
+    href: '/services/steering-committee-reporting',
+  },
+];
+
+const beehiivSignupUrl = import.meta.env.PUBLIC_BEEHIIV_SIGNUP_URL || '/newsletter';
+---
+
+<Layout
+  title="Sky Lavelle | Senior Project Delivery Consultant"
+  description="Sky Lavelle is a senior project delivery consultant specialising in complex technology delivery, project recovery, governance, procurement and digital transformation."
+>
+  <!-- HERO -->
+  <section class="bg-warm-950 text-white py-20 lg:py-32 overflow-hidden">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Left: text -->
+        <div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Senior Project Delivery Consultant
+          </h1>
+          <p class="text-lg lg:text-xl leading-relaxed mb-8 max-w-xl" style="color: rgba(250,248,245,0.72)">
+            I help organisations get difficult technology programs back under control. Project recovery, governance reset, procurement and the senior delivery work that gets stalled initiatives across the line.
+          </p>
+          <a
+            href="/contact"
+            data-ga-event="hero_cta_primary"
+            class="inline-flex items-center px-6 py-3.5 text-base font-medium text-white bg-ochre-600 hover:bg-ochre-400 rounded-md transition-colors"
+          >
+            Work With Sky
+          </a>
+        </div>
+
+        <!-- Right: portrait placeholder -->
+        <!-- TODO: Replace with portrait photo of Sky Lavelle (portrait orientation, approx 4:5 crop, warm treatment) -->
+        <div class="order-first lg:order-last flex justify-center lg:justify-end">
+          <picture>
+            <Image
+              src={heroImg}
+              alt="Sky Lavelle"
+              class="w-full max-w-xs lg:max-w-sm rounded-2xl object-cover aspect-[4/5]"
+              widths={[480, 800]}
+              sizes="(min-width: 1024px) 480px, 320px"
+              quality={80}
+            />
+          </picture>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF BAR -->
+  <div class="bg-warm-900 border-b border-warm-800">
+    <div class="container py-4">
+      <ul class="flex flex-wrap gap-x-8 gap-y-2" role="list">
+        {proofBar.map((item) => (
+          <li class="flex items-center gap-2 text-sm" style="color: rgba(250,248,245,0.6)">
+            <span class="w-1.5 h-1.5 rounded-full bg-ochre-600 shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- ABOUT / BRAND RELATIONSHIP -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-3 font-sans">About</p>
+        <h2 class="text-xl lg:text-2xl font-bold text-warm-900 mb-4">Sky Lavelle and Lavelle Pty Ltd</h2>
+        <p class="text-lg text-warm-700 leading-relaxed">
+          This site is where I write about my work and share thinking on project delivery. The PMO resources, templates and consulting enquiries are managed through my company, <a href="https://lavelleptyltd.com.au" target="_blank" rel="noopener noreferrer" class="text-ochre-600 hover:text-ochre-700 underline underline-offset-2">Lavelle Pty Ltd</a>.
+        </p>
+        <a
+          href="/about"
+          class="inline-flex items-center mt-5 text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans"
+        >
+          About Sky Lavelle
+          <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES - editorial list -->
+  <section class="section">
+    <div class="container">
+      <div class="max-w-xl mb-10">
+        <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-3 font-sans">Consulting services</p>
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900">Senior Support For Complex Delivery Situations</h2>
+      </div>
+      <div class="max-w-3xl divide-y divide-warm-200">
+        {services.map((s) => (
+          <div class="py-8 lg:py-10">
+            <h3 class="text-xl font-semibold text-warm-900 mb-3">{s.title}</h3>
+            <p class="text-warm-700 leading-relaxed mb-2">{s.problem}</p>
+            <p class="text-warm-700 leading-relaxed mb-5">{s.outcome}</p>
+            <a
+              href={s.href}
+              class="inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans"
+            >
+              View service
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+        <div class="py-8 lg:py-10">
+          <p class="text-warm-700 leading-relaxed mb-5">
+            Send a short description of your situation. An initial conversation costs nothing and helps clarify what support is actually useful.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans"
+          >
+            Send an enquiry
+            <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF POINTS -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="max-w-xl mb-10">
+        <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-3 font-sans">Experience</p>
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900">Delivery Background</h2>
+      </div>
+      <div class="max-w-3xl space-y-5">
+        <p class="text-warm-700 leading-relaxed">
+          Recent engagements include a major web content management transformation at Griffith University, delivered in roughly 12 months against an expected multi-year timeline; an analytics migration at the ABC across approximately 100 staff in product, data and engineering teams; and a Salesforce CRM and Microsoft 365 E5 security uplift program delivered in a sensitive environment.
+        </p>
+        <p class="text-warm-700 leading-relaxed">
+          Procurement work has included enterprise restricted RFPs with multi-supplier panels, BAFO management, contract negotiation and delegate approval. I have authored the business case for an enterprise content infrastructure initiative and chaired evaluation panels of up to 15 people.
+        </p>
+        <p class="text-warm-700 leading-relaxed">
+          If your situation looks something like this, an enquiry is a sensible starting point.
+        </p>
+        <a href="/contact" class="inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans">
+          Send an enquiry
+          <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAVELLE PTY LTD RESOURCES -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-3 font-sans">Lavelle Pty Ltd</p>
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-4">
+          PMO Resources, Templates and Delivery Tools
+        </h2>
+        <p class="text-warm-700 leading-relaxed mb-6">
+          The templates, frameworks and free tools I have developed over the years are published through Lavelle Pty Ltd. Project Recovery Packs, business case structures and steering committee reporting templates all live there.
+        </p>
+        <a
+          href="https://lavelleptyltd.com.au/pmo-resources"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-ga-event="resource_cta_click"
+          class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-warm-900 hover:bg-warm-800 rounded-md transition-colors font-sans"
+        >
+          Visit lavelleptyltd.com.au
+          <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES - editorial magazine layout -->
+  {featuredArticles.length > 0 && (
+    <section class="section-alt">
+      <div class="container">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <p class="text-sm font-semibold text-ochre-600 uppercase tracking-wider mb-3 font-sans">Articles</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-warm-900">Practical Guides For Enterprise Delivery</h2>
+          </div>
+          <a
+            href="/articles"
+            class="hidden sm:inline-flex items-center text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans"
+          >
+            All articles
+            <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Lead article - prominent -->
+        {leadArticle && (
+          <div class="pb-10 mb-10 border-b border-warm-200">
+            {leadArticle.data.category && (
+              <p class="text-xs font-semibold uppercase tracking-widest text-ochre-600 mb-3 font-sans">{leadArticle.data.category}</p>
+            )}
+            <h3 class="text-2xl lg:text-3xl font-bold text-warm-900 leading-tight mb-3">
+              <a href={`/articles/${leadArticle.id}`} class="hover:text-ochre-600 transition-colors">
+                {leadArticle.data.title}
+              </a>
+            </h3>
+            <p class="text-base text-warm-700 leading-relaxed mb-4 max-w-2xl">{leadArticle.data.description}</p>
+            <div class="flex items-center gap-5">
+              <time class="text-xs text-warm-700/60 font-sans" datetime={leadArticle.data.publishDate.toISOString()}>
+                {formatDate(leadArticle.data.publishDate)}
+              </time>
+              <a
+                href={`/articles/${leadArticle.id}`}
+                class="text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors font-sans"
+              >
+                Read article →
+              </a>
+            </div>
+          </div>
+        )}
+
+        <!-- Remaining articles -->
+        {restArticles.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {restArticles.map((article) => (
+              <div>
+                {article.data.category && (
+                  <p class="text-xs font-semibold uppercase tracking-widest text-ochre-600 mb-2 font-sans">{article.data.category}</p>
+                )}
+                <h3 class="text-lg font-semibold text-warm-900 leading-snug mb-2">
+                  <a href={`/articles/${article.id}`} class="hover:text-ochre-600 transition-colors">
+                    {article.data.title}
+                  </a>
+                </h3>
+                <time class="text-xs text-warm-700/60 font-sans" datetime={article.data.publishDate.toISOString()}>
+                  {formatDate(article.data.publishDate)}
+                </time>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div class="mt-8 sm:hidden text-center">
+          <a href="/articles" class="text-sm font-medium text-ochre-600 hover:text-ochre-700 font-sans">View all articles</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- NEWSLETTER - editorial -->
+  <section class="py-16 lg:py-20 bg-warm-950">
+    <div class="container">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-white mb-4">The Project Recovery Brief</h2>
+        <p class="leading-relaxed mb-8 max-w-xl" style="color: rgba(250,248,245,0.72)">
+          An occasional note from me to senior project managers and technology leaders working through difficult delivery environments.
+        </p>
+        <a
+          href={beehiivSignupUrl}
+          data-ga-event="newsletter_signup_click"
+          class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-ochre-600 hover:bg-ochre-400 rounded-md transition-colors font-sans"
+        >
+          Subscribe free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-warm-900 mb-4">Need Senior Project Support?</h2>
+      <p class="text-lg text-warm-700 mb-8">
+        If you are working through a difficult delivery situation, send a short enquiry. An initial conversation costs nothing.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-7 py-3.5 text-base font-medium text-white bg-ochre-600 hover:bg-ochre-400 rounded-md transition-colors font-sans"
+      >
+        Work With Sky
+      </a>
+      <p class="mt-5">
+        <a
+          href="https://lavelleptyltd.com.au/pmo-resources"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-warm-700/60 hover:text-ochre-600 transition-colors font-sans"
+        >
+          View Lavelle Pty Ltd Resources ↗
+        </a>
+      </p>
+    </div>
+  </section>
+</Layout>

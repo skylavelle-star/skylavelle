@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Steering Committee and Executive Reporting | Program Governance"
+  description="Executive-ready program status reporting, risk registers and escalation packs designed for steering committees and boards. Clear, decision-ready information without the noise."
+>
+  <Hero
+    heading="Steering Committee and Executive Reporting"
+    subheading="Status reporting, risk registers and escalation packs designed for steering committees and executive audiences. Information that supports decisions, not documents that reassure."
+    compact
+    eyebrow="Service"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-10">
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">The problem</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Most program status reports are written for the person preparing them, not for the committee reading them. They contain the right information in the wrong order, bury the risks that matter in a list of thirty items, present RAG ratings that do not reflect the actual state of the program, and require the committee to work hard to understand what decision or action is required of them.
+              </p>
+              <p>
+                Steering committees that cannot read their own program reports accurately cannot provide effective governance. The consequence is that escalations arrive late, decisions are made without adequate information, and the committee is surprised by problems that were visible in the data months earlier.
+              </p>
+              <p>
+                Good executive reporting is a craft. It requires an understanding of what the audience needs to know, a clear view of what the program's actual state is, and the discipline to present that clearly even when the news is not good.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">When to use this service</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'A program needs a reporting framework that will give its steering committee accurate, decision-ready information',
+                  'An existing reporting pack needs to be restructured to support better governance',
+                  'A new steering committee needs a reporting standard established at the start of a program',
+                  'A program in recovery needs a reset of its reporting to rebuild committee confidence',
+                  'An escalation needs to be prepared and presented to an executive or board audience',
+                  'A program is approaching a major milestone or gate review and needs structured reporting to support it',
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-warm-800">
+                    <svg class="w-5 h-5 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">What Sky Lavelle provides</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Reporting engagements cover the full design of the reporting framework - the structure of the status report, the risk register format, the escalation threshold definitions, and the meeting pack structure. This includes working with the delivery team to understand what information they actually have, and building reporting that can be sustained by the team without constant external support.
+              </p>
+              <p>
+                For programs in recovery, reporting design often includes a committee reset - a structured briefing to the committee that resets expectations, establishes what accurate reporting will look like going forward, and creates the conditions for honest escalation.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">Likely outputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {
+                [
+                  'Steering committee reporting template',
+                  'Executive dashboard format',
+                  'Risk register structure and escalation thresholds',
+                  'Meeting pack template and agenda structure',
+                  'RAG rating definitions and criteria',
+                  'Escalation pack template',
+                  'Committee terms of reference',
+                  'Reporting calendar and cadence plan',
+                ].map((output) => (
+                  <div class="flex items-center gap-2.5 p-3 rounded-md border border-warm-200 bg-white text-sm text-warm-800">
+                    <svg class="w-4 h-4 text-ochre-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {output}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6 sticky top-24">
+            <h3 class="text-base font-semibold text-warm-900 mb-3">Discuss your reporting needs</h3>
+            <p class="text-sm text-warm-800 mb-4 leading-relaxed">
+              Describe your current reporting situation and what the committee needs to be able to do with the information.
+            </p>
+            <a
+              href="/contact?service=reporting"
+              class="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Send an enquiry
+            </a>
+            <div class="mt-4 pt-4 border-t border-warm-200">
+              <p class="text-xs text-ochre-600 mb-2 font-medium">Related resources</p>
+              <ul class="space-y-1.5">
+                <li>
+                  <a href="https://lavelleptyltd.com.au/templates/steering-committee-pack" target="_blank" rel="noopener noreferrer" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    Steering Committee Pack (Lavelle Pty Ltd)
+                  </a>
+                </li>
+                <li>
+                  <a href="/articles/how-to-build-a-steering-committee-report" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    How to build a steering committee report
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

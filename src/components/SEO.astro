@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'Practical project management advisory, templates and resources for senior technology leaders and enterprise project managers.',
+  ogImage = '/og-default.png',
+  canonicalURL,
+  noindex = false,
+} = Astro.props;
+
+const siteURL = import.meta.env.PUBLIC_SITE_URL || 'https://skylavelle.com.au';
+const canonical = canonicalURL || new URL(Astro.url.pathname, siteURL).href;
+const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteURL).href;
+
+const fullTitle = title.includes('Sky Lavelle') ? title : `${title} | Sky Lavelle`;
+---
+
+<title>{fullTitle}</title>
+<meta name="google-site-verification" content="tI-DjzCEfqKU9naAwXQXDaVMcTjc8L7nrOni_LBrs_E" />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:site_name" content="Sky Lavelle" />
+<meta property="og:locale" content="en_AU" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />

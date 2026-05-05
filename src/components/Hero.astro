@@ -1,0 +1,70 @@
+---
+interface Props {
+  heading: string;
+  subheading?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  eyebrow?: string;
+  compact?: boolean;
+}
+
+const {
+  heading,
+  subheading,
+  primaryCTA,
+  secondaryCTA,
+  eyebrow,
+  compact = false,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'bg-warm-950 text-white',
+    compact ? 'py-14 lg:py-20' : 'py-20 lg:py-32',
+  ]}
+>
+  <div class="container">
+    <div class="max-w-3xl">
+      {
+        eyebrow && (
+          <p class="text-ochre-400 text-sm font-semibold uppercase tracking-wider mb-4">
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+        {heading}
+      </h1>
+      {
+        subheading && (
+          <p class="mt-6 text-lg lg:text-xl text-warm-200 leading-relaxed max-w-2xl">
+            {subheading}
+          </p>
+        )
+      }
+      {
+        (primaryCTA || secondaryCTA) && (
+          <div class="mt-8 flex flex-wrap gap-4">
+            {primaryCTA && (
+              <a
+                href={primaryCTA.href}
+                class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-ochre-600 hover:bg-ochre-400 rounded-md transition-colors"
+              >
+                {primaryCTA.label}
+              </a>
+            )}
+            {secondaryCTA && (
+              <a
+                href={secondaryCTA.href}
+                class="inline-flex items-center px-6 py-3 text-base font-medium text-white border border-warm-700 hover:border-warm-200 hover:bg-white/5 rounded-md transition-colors"
+              >
+                {secondaryCTA.label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

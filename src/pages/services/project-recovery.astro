@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Project Recovery | Enterprise Technology Program Recovery"
+  description="Structured intervention for failing technology projects. Rapid health assessment, honest diagnosis and a realistic recovery path for programs that have stalled, overspent or lost stakeholder confidence."
+>
+  <Hero
+    heading="Project Recovery"
+    subheading="A structured intervention for programs that have stalled, gone over budget, lost the confidence of key stakeholders, or reached a point where delivery has become genuinely uncertain."
+    compact
+    eyebrow="Service"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-10">
+
+          <!-- The problem -->
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">The problem</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Enterprise technology programs fail in predictable ways. The original schedule proves unrealistic, costs escalate beyond the approved envelope, the vendor relationship becomes adversarial, or the executive sponsor loses confidence in the delivery team's ability to complete the work.
+              </p>
+              <p>
+                By the time the situation surfaces in a steering committee report, the program has usually accumulated months of risk that was not escalated, scope changes that were not formally governed, and a team dynamic that has made honest assessment difficult.
+              </p>
+              <p>
+                What is needed at that point is not more optimism. It is a clear-eyed assessment of what has actually gone wrong, what it will take to recover, and whether recovery is the right decision at all.
+              </p>
+            </div>
+          </div>
+
+          <!-- When to use -->
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">When to use this service</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'A program has missed multiple milestones and the team is providing explanations rather than solutions',
+                  'Costs have exceeded the approved budget and a supplementary business case is needed',
+                  'The executive sponsor or steering committee has lost confidence in the current delivery approach',
+                  'A vendor relationship has become adversarial and contract management is consuming delivery capacity',
+                  'The program has accumulated significant governance debt that needs to be cleared before delivery can resume',
+                  'A new program manager has been appointed and needs an independent assessment of inherited risk',
+                  'An independent review has been commissioned and the program needs preparation or response support',
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-warm-800">
+                    <svg
+                      class="w-5 h-5 text-ochre-600 mt-0.5 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- What Sky Lavelle provides -->
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">What Sky Lavelle provides</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Recovery engagements begin with a structured diagnostic. This is a rapid assessment of the program's actual state across delivery confidence, governance health, stakeholder alignment, financial position and vendor relationships.
+              </p>
+              <p>
+                The diagnostic produces a written finding - an honest account of what has gone wrong, what the realistic options are, and what recovery will require in terms of time, money, governance decisions and stakeholder communication.
+              </p>
+              <p>
+                From there, the engagement can take several forms depending on what the situation requires: hands-on delivery support to stabilise the program, targeted intervention on a specific problem such as a vendor negotiation or a governance reset, or preparation of the executive-level communications needed to reset expectations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Likely outputs -->
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">Likely outputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {
+                [
+                  'Program health diagnostic report',
+                  'Recovery roadmap with realistic milestones',
+                  'Risk re-baseline and updated risk register',
+                  'Stakeholder reset communication pack',
+                  'Steering committee recovery briefing',
+                  'Vendor remediation plan',
+                  'Governance reset documentation',
+                  'Supplementary business case (if required)',
+                ].map((output) => (
+                  <div class="flex items-center gap-2.5 p-3 rounded-md border border-warm-200 bg-white text-sm text-warm-800">
+                    <svg
+                      class="w-4 h-4 text-ochre-600 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    {output}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6 sticky top-24">
+            <h3 class="text-base font-semibold text-warm-900 mb-3">Enquire about project recovery</h3>
+            <p class="text-sm text-warm-800 mb-4 leading-relaxed">
+              If you are dealing with a program that needs senior attention, describe the situation and what you need. An initial conversation is a useful starting point.
+            </p>
+            <a
+              href="/contact?service=project-recovery"
+              class="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Send an enquiry
+            </a>
+            <div class="mt-4 pt-4 border-t border-warm-200">
+              <p class="text-xs text-ochre-600 mb-2 font-medium">Related resources</p>
+              <ul class="space-y-1.5">
+                <li>
+                  <a href="https://lavelleptyltd.com.au/free-tools/project-recovery-checklist" target="_blank" rel="noopener noreferrer" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    Free project recovery checklist
+                  </a>
+                </li>
+                <li>
+                  <a href="https://lavelleptyltd.com.au/templates/project-recovery-pack" target="_blank" rel="noopener noreferrer" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    Project Recovery Pack (Lavelle Pty Ltd)
+                  </a>
+                </li>
+                <li>
+                  <a href="/articles/how-to-rescue-a-failing-it-project" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    How to rescue a failing IT project
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Enterprise Technology Delivery | Program Management Advisory"
+  description="Senior program management for complex multi-vendor enterprise technology programs across data, analytics, cloud, cybersecurity, CMS, CRM and digital transformation."
+>
+  <Hero
+    heading="Enterprise Technology Delivery"
+    subheading="Senior program management for complex technology programs. Data platforms, cloud migration, cybersecurity uplift, CMS, CRM, digital transformation and multi-vendor delivery environments."
+    compact
+    eyebrow="Service"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-10">
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">The problem</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Enterprise technology programs are structurally different from standard projects. They run longer, involve more vendors, depend on architectural decisions that cannot easily be reversed, and require governance structures that can hold together across a period of years rather than months.
+              </p>
+              <p>
+                The project managers assigned to these programs are often technically capable but operating without adequate governance support, executive sponsorship, or organisational authority to make the decisions the program needs. The result is a delivery environment where the PM is managing upward as much as downward, and where the program's shape is determined more by vendor capability and organisational politics than by an intentional delivery strategy.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">When to use this service</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'A large technology program needs senior program management support that the internal team cannot provide',
+                  'A multi-vendor program requires someone who can hold vendors accountable across the full delivery scope',
+                  'A data or analytics program requires PM experience with data architecture, integration and reporting uplift',
+                  'A cybersecurity program needs delivery leadership that understands both the technical and governance dimensions',
+                  'A cloud migration requires structured planning, risk management and coordination across infrastructure and application teams',
+                  'A CMS or digital platform replacement requires experience with content migration, stakeholder management and business readiness',
+                  'A CRM implementation requires PM capability that understands process change, data quality and user adoption',
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-warm-800">
+                    <svg class="w-5 h-5 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">What Sky Lavelle provides</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Senior program management that covers the full delivery scope. This is not a coordination role - it is substantive delivery leadership that includes design authority input, vendor management, governance structure, stakeholder reporting and financial accountability.
+              </p>
+              <p>
+                Engagements can be structured as embedded advisory support (two or more days per week for the duration of a delivery phase), discrete delivery leadership for a specific workstream, or rapid-start program management for a program that needs senior oversight immediately.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">Likely outputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {
+                [
+                  'Program governance framework',
+                  'Integrated program schedule',
+                  'Vendor management framework',
+                  'Risk and issues register',
+                  'Steering committee reporting pack',
+                  'Dependency and interface map',
+                  'Business readiness assessment',
+                  'Program closure report',
+                ].map((output) => (
+                  <div class="flex items-center gap-2.5 p-3 rounded-md border border-warm-200 bg-white text-sm text-warm-800">
+                    <svg class="w-4 h-4 text-ochre-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {output}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6 sticky top-24">
+            <h3 class="text-base font-semibold text-warm-900 mb-3">Discuss your program</h3>
+            <p class="text-sm text-warm-800 mb-4 leading-relaxed">
+              Describe your program, the current delivery state, and what support you need. An initial conversation is the best place to start.
+            </p>
+            <a
+              href="/contact?service=enterprise-delivery"
+              class="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Send an enquiry
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

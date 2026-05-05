@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Business Case Development | Technology Investment Proposals"
+  description="Rigorous investment proposals and business cases for significant technology programs. Structured for delegate approval, executive review and Treasury requirements."
+>
+  <Hero
+    heading="Business Case and Investment Proposal Development"
+    subheading="Rigorous investment proposals for significant technology programs. Structured for delegate approval, executive review, Treasury requirements and audit scrutiny."
+    compact
+    eyebrow="Service"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-10">
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">The problem</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                A poorly constructed business case is not just a documentation problem. It is a delivery risk. When an investment proposal does not accurately capture the full cost of the work, misrepresents the options considered, or presents a benefits case that cannot survive scrutiny, the problems it creates follow the program for its entire life.
+              </p>
+              <p>
+                Delegate approvals are granted on the basis of the information in the business case. When that information proves to be inaccurate - because costs were underestimated, scope was ill-defined, or dependencies were not identified - the program runs into trouble before it has properly started, and the team spends months justifying decisions that should have been made before the work began.
+              </p>
+              <p>
+                The other common failure is a business case that is written to support a conclusion that has already been reached, rather than to inform a genuine decision. This creates governance risk when the decision is later reviewed, and delivery risk when the assumptions that underpinned it turn out to be wrong.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">When to use this service</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'A significant technology investment needs a business case prepared for delegate or board approval',
+                  'A program requires a supplementary business case following cost overruns or scope changes',
+                  'A strategic options analysis is needed to support a decision about technology direction',
+                  'A benefits realisation framework needs to be developed to accompany a capital investment',
+                  'A Treasury submission or departmental investment review requires structured documentation',
+                  'An existing business case needs to be reviewed and strengthened before it goes to the approver',
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-warm-800">
+                    <svg class="w-5 h-5 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">What Sky Lavelle provides</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Business case engagements begin with a structured discovery process to establish the problem being solved, the options available, the costs and benefits of each, and the governance requirements that apply to the approval. This is not a documentation service - it is an analytical process that results in a business case that can withstand challenge.
+              </p>
+              <p>
+                The output is a complete investment proposal structured to the requirements of the approving authority - whether that is a departmental delegate, an investment committee, a board, or a central agency review. The document covers the problem statement, options analysis, preferred option justification, financial model, risk assessment, implementation approach and benefits realisation plan.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">Likely outputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {
+                [
+                  'Full business case document',
+                  'Strategic options analysis',
+                  'Financial model (cost-benefit analysis)',
+                  'Benefits realisation plan',
+                  'Risk assessment',
+                  'Implementation roadmap summary',
+                  'Executive summary for delegate approval',
+                  'Supplementary business case (if required)',
+                ].map((output) => (
+                  <div class="flex items-center gap-2.5 p-3 rounded-md border border-warm-200 bg-white text-sm text-warm-800">
+                    <svg class="w-4 h-4 text-ochre-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {output}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6 sticky top-24">
+            <h3 class="text-base font-semibold text-warm-900 mb-3">Discuss your business case</h3>
+            <p class="text-sm text-warm-800 mb-4 leading-relaxed">
+              Describe the investment, who it needs to be approved by, and the timeline. An initial conversation helps scope the engagement.
+            </p>
+            <a
+              href="/contact?service=business-case"
+              class="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Send an enquiry
+            </a>
+            <div class="mt-4 pt-4 border-t border-warm-200">
+              <p class="text-xs text-ochre-600 mb-2 font-medium">Related resources</p>
+              <ul class="space-y-1.5">
+                <li>
+                  <a href="https://lavelleptyltd.com.au/templates/business-case-pack" target="_blank" rel="noopener noreferrer" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    Business Case Pack (Lavelle Pty Ltd)
+                  </a>
+                </li>
+                <li>
+                  <a href="/articles/how-to-write-a-technology-business-case" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    How to write a technology business case
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

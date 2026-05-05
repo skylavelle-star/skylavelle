@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout
+  title="Procurement and Governance | Technology Procurement Advisory"
+  description="Restricted RFP design, BAFO process management, probity-sound evaluation frameworks and delegate approval documentation for significant enterprise technology acquisitions."
+>
+  <Hero
+    heading="Procurement and Governance"
+    subheading="Restricted tender design, RFP management, BAFO processes, evaluation frameworks and delegate approval documentation for complex technology acquisitions."
+    compact
+    eyebrow="Service"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-10">
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">The problem</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Technology procurement is a discipline that sits at the intersection of legal compliance, commercial strategy and delivery governance. Done poorly, it produces contracts that cannot be enforced, evaluation processes that do not hold up to audit scrutiny, or procurement outcomes that were predetermined rather than genuinely competitive.
+              </p>
+              <p>
+                The governance requirements around significant technology acquisitions - particularly in government and regulated industries - are substantial. Restricted tender processes, BAFO negotiations, probity obligations and delegate approval thresholds create a compliance burden that most project managers are not equipped to manage alongside a live delivery program.
+              </p>
+              <p>
+                Getting this wrong has consequences. A procurement process that cannot withstand scrutiny creates legal and reputational risk. A vendor contract that does not reflect the actual scope of the work creates delivery risk that will surface months after the contract is signed.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">When to use this service</h2>
+            <ul class="space-y-3">
+              {
+                [
+                  'A restricted tender process needs to be designed and run for a significant technology acquisition',
+                  'An RFP evaluation process needs a structured framework that will hold up to audit and probity review',
+                  'A BAFO process needs to be managed fairly and with appropriate governance documentation',
+                  'Delegate approval documentation needs to be prepared for a procurement recommendation',
+                  'A procurement process that has encountered a challenge needs to be reviewed and documented',
+                  'A technology contract needs to be reviewed against the original procurement scope',
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-warm-800">
+                    <svg class="w-5 h-5 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">What Sky Lavelle provides</h2>
+            <div class="space-y-4 text-warm-700 leading-relaxed">
+              <p>
+                Procurement engagements can cover the full cycle from tender design to contract execution, or specific phases that require specialist input. The work is structured to maintain probity throughout the process, with clear separation between the advisory role and the decision authority that sits with the organisation.
+              </p>
+              <p>
+                Evaluation frameworks are designed to produce defensible outcomes - weighted criteria structures that reflect the genuine priorities of the acquisition, scoring guidance that reduces evaluator bias, and documentation that supports the recommendation.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-warm-900 mb-4">Likely outputs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {
+                [
+                  'Restricted tender design and RFP documentation',
+                  'Weighted evaluation scorecard',
+                  'Evaluation panel guidance and training',
+                  'BAFO request documentation',
+                  'BAFO evaluation and comparison framework',
+                  'Procurement recommendation report',
+                  'Delegate approval submission',
+                  'Probity plan and log',
+                ].map((output) => (
+                  <div class="flex items-center gap-2.5 p-3 rounded-md border border-warm-200 bg-white text-sm text-warm-800">
+                    <svg class="w-4 h-4 text-ochre-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {output}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6 sticky top-24">
+            <h3 class="text-base font-semibold text-warm-900 mb-3">Discuss your procurement</h3>
+            <p class="text-sm text-warm-800 mb-4 leading-relaxed">
+              Describe the acquisition, the procurement stage you are at, and what governance requirements apply. An initial conversation helps scope the engagement correctly.
+            </p>
+            <a
+              href="/contact?service=procurement"
+              class="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Send an enquiry
+            </a>
+            <div class="mt-4 pt-4 border-t border-warm-200">
+              <p class="text-xs text-ochre-600 mb-2 font-medium">Related resources</p>
+              <ul class="space-y-1.5">
+                <li>
+                  <a href="https://lavelleptyltd.com.au/templates/procurement-pack" target="_blank" rel="noopener noreferrer" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    Procurement Pack (Lavelle Pty Ltd)
+                  </a>
+                </li>
+                <li>
+                  <a href="/articles/how-to-run-a-restricted-rfp" class="text-xs text-ochre-600 hover:text-warm-900 underline">
+                    How to run a restricted RFP
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

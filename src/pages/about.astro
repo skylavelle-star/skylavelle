@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import aboutImg from '../assets/images/about.jpg';
+---
+
+<Layout
+  title="About Sky Lavelle | Senior Enterprise Project Manager"
+  description="Sky Lavelle is a Senior Project Manager with 20+ years of experience delivering complex enterprise technology programs. Specialising in project recovery, procurement governance and business case development."
+>
+  <!-- Custom hero with image -->
+  <section class="relative bg-warm-950 text-white py-14 lg:py-20 overflow-hidden">
+    <Image
+      src={aboutImg}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover opacity-10"
+      loading="eager"
+      widths={[800, 1200, 1600]}
+      sizes="100vw"
+      quality={75}
+    />
+    <div class="relative container">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">About Sky Lavelle</h1>
+        <p class="text-lg text-warm-200">Senior Project Manager. Enterprise technology delivery. Practical, direct, commercially grounded.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credibility panel -->
+  <section class="section-alt border-b border-warm-200">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { stat: '20+ years', label: 'Enterprise technology delivery' },
+          { stat: 'Senior PM', label: 'Program Manager and advisor' },
+          { stat: 'Govt, higher ed,\nmedia, NFP', label: 'Sectors and environments' },
+          { stat: 'Recovery,\nprocurement,\nbusiness cases', label: 'Core practice areas' },
+        ].map((item) => (
+          <div class="p-5 rounded-lg border border-warm-200 bg-white text-center">
+            <div class="text-lg font-bold text-warm-900 leading-snug whitespace-pre-line mb-1">{item.stat}</div>
+            <div class="text-xs text-warm-700 leading-relaxed">{item.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio section -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- Bio narrative (2 cols) -->
+        <div class="lg:col-span-2 space-y-5 text-warm-800 leading-relaxed">
+          <p class="text-lg text-warm-900 font-medium">
+            Twenty years in enterprise technology delivery teaches you how these programs actually work - not how the methodology says they should.
+          </p>
+
+          <p>
+            Sky is the principal consultant, director and owner of <a href="https://lavelleptyltd.com.au" target="_blank" rel="noopener noreferrer" class="text-ochre-600 hover:text-ochre-700 underline">Lavelle Pty Ltd</a>, the company through which he delivers consulting work and publishes PMO resources, delivery frameworks and project templates.
+          </p>
+
+          <p>
+            Sky Lavelle is a Senior Project Manager and Program Manager who has spent two decades working across some of the most complex technology delivery environments in Australia. The work has covered data platforms, analytics and reporting uplift, cloud migration, cybersecurity programs, content management systems, CRM implementations, digital transformation and procurement governance across government, higher education, financial services, utilities and professional services.
+          </p>
+
+          <p>
+            The most significant thread across that work has been recovery. Not all programs arrive on day one in a good state. Many of the most meaningful engagements have started with a program that had stalled, overspent, lost the confidence of its sponsor, or accumulated so much governance debt that moving forward required clearing the decks before doing anything else.
+          </p>
+
+          <p>
+            That kind of work demands a specific combination: technical credibility to understand what has actually gone wrong, enough commercial understanding to frame what it will cost to fix it, and the communication skills to rebuild confidence with executives and steering committees who have already had their trust eroded.
+          </p>
+
+          <p>
+            Business case authorship has been a consistent part of the practice. This means investment proposals and strategic options analyses designed to secure delegate approval for significant expenditure - not documents that dress up a preferred option, but cases that present a rigorous analysis of the choices available and the financial and operational implications of each.
+          </p>
+
+          <p>
+            Procurement work has included designing and running restricted RFPs, managing Best and Final Offer processes, maintaining probity standards in competitive evaluation, and preparing the delegate approval documentation that supports complex technology acquisitions. This is a narrow discipline that requires careful attention to governance requirements and a clear separation between evaluation, recommendation and decision authority.
+          </p>
+
+          <p>
+            That experience is now accessible through two channels: direct senior advisory and consulting engagements through Lavelle Pty Ltd, and practical PMO resources, templates and delivery tools available at <a href="https://lavelleptyltd.com.au" target="_blank" rel="noopener noreferrer" class="text-ochre-600 hover:text-ochre-700 underline">lavelleptyltd.com.au</a>.
+          </p>
+        </div>
+
+        <!-- Sidebar panels -->
+        <div class="space-y-6">
+          <!-- Areas of practice -->
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-4">Areas of practice</h2>
+            <ul class="space-y-2.5">
+              {[
+                'Project and program recovery',
+                'Enterprise technology delivery',
+                'Data and analytics platforms',
+                'Cloud migration programs',
+                'Cybersecurity uplift programs',
+                'CMS and digital platforms',
+                'CRM implementations',
+                'Procurement governance',
+                'Restricted RFPs and BAFOs',
+                'Business case authorship',
+                'Delegate approval frameworks',
+                'Steering committee reporting',
+                'Executive stakeholder management',
+              ].map((item) => (
+                <li class="flex items-start gap-2 text-sm text-warm-800">
+                  <svg
+                    class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Sectors -->
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-4">Sectors</h2>
+            <div class="flex flex-wrap gap-2">
+              {[
+                'Government',
+                'Financial services',
+                'Utilities',
+                'Higher education',
+                'Media',
+                'Not-for-profit',
+                'Professional services',
+              ].map((sector) => (
+                <span class="text-xs font-medium text-warm-700 bg-warm-100 px-2.5 py-1 rounded-full">
+                  {sector}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="rounded-lg border border-warm-200 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-3">Connect on LinkedIn</h2>
+            <a
+              href="https://linkedin.com/in/skylavelle"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm font-medium text-ochre-600 hover:text-ochre-700 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              linkedin.com/in/skylavelle
+            </a>
+          </div>
+
+          <!-- Advisory CTA box -->
+          <div class="rounded-lg border border-warm-200 bg-warm-100 p-6">
+            <h2 class="text-base font-semibold text-warm-900 mb-2">Consulting and advisory enquiries</h2>
+            <p class="text-sm text-warm-800 mb-4">
+              Consulting and contract project management enquiries are managed through Lavelle Pty Ltd.
+            </p>
+            <a
+              href="https://lavelleptyltd.com.au/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Engage Lavelle Pty Ltd
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How I work -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="max-w-2xl mb-10">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-4">How I Work</h2>
+        <p class="text-warm-700">
+          Advisory engagements are tailored to the specific situation. There is no standard package or retainer model imposed on every client. The structure depends on what is actually needed.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            title: 'Direct diagnosis',
+            description: 'Assess what is actually wrong, not what is comfortable to report. Problems do not improve by being described more diplomatically.',
+          },
+          {
+            title: 'Structured options',
+            description: 'Present the realistic choices and their implications clearly. Executives need to understand what each path costs and what it requires.',
+          },
+          {
+            title: 'Commercially realistic recommendations',
+            description: 'Account for budget, politics and organisational constraints. The best recommendation is the one that can actually be implemented.',
+          },
+          {
+            title: 'Clear executive communication',
+            description: 'Translate delivery complexity into information executives can act on. Committees govern through information - that information has to be right.',
+          },
+          {
+            title: 'No methodology theatre',
+            description: 'No unnecessary frameworks or process for its own sake. The work is structured around what the situation requires, not what a methodology prescribes.',
+          },
+        ].map((item) => (
+          <div class="p-6 rounded-lg border border-warm-200 bg-white">
+            <h3 class="text-base font-semibold text-warm-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-warm-700 leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-4">
+        Working Through A Difficult Delivery Situation?
+      </h2>
+      <p class="text-warm-700 mb-8">
+        If your program needs senior attention, an enquiry is the right starting point. Describe your situation and what you need.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-7 py-3.5 text-base font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+      >
+        Send An Enquiry
+      </a>
+    </div>
+  </section>
+</Layout>

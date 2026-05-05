@@ -1,0 +1,541 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import servicesImg from '../../assets/images/services.jpg';
+
+const services = [
+  { label: 'Project Recovery', anchor: 'project-recovery' },
+  { label: 'Enterprise Technology Delivery', anchor: 'enterprise-delivery' },
+  { label: 'Procurement Governance', anchor: 'procurement' },
+  { label: 'Business Case Development', anchor: 'business-case' },
+  { label: 'Steering Committee Reporting', anchor: 'reporting' },
+];
+---
+
+<Layout
+  title="Advisory Services | Enterprise Project Management"
+  description="Project recovery, enterprise technology delivery, procurement governance, business case development and steering committee reporting. Senior advisory support for complex delivery environments."
+>
+  <section class="relative bg-warm-950 text-white py-14 lg:py-20 overflow-hidden">
+    <Image
+      src={servicesImg}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover opacity-10"
+      loading="eager"
+      widths={[800, 1200, 1600]}
+      sizes="100vw"
+      quality={75}
+    />
+    <div class="relative container">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">Advisory Services</h1>
+        <p class="text-lg text-warm-200">Senior project management support for enterprise technology delivery, project recovery, procurement governance and business case development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick navigation -->
+  <section class="border-b border-warm-200 bg-white sticky top-0 z-10">
+    <div class="container">
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 py-3" aria-label="Services navigation">
+        {services.map((s) => (
+          <a
+            href={`#${s.anchor}`}
+            class="text-sm font-medium text-warm-800 hover:text-ochre-600 transition-colors py-1 whitespace-nowrap"
+          >
+            {s.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- Project Recovery -->
+  <section id="project-recovery" class="section scroll-mt-16">
+    <div class="container">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-8">Project Recovery</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Common symptoms</h3>
+            <ul class="space-y-2">
+              {[
+                'Delivery dates keep moving without resolution',
+                'The sponsor has lost confidence in the program',
+                'Risks are being reported but not resolved',
+                'Vendors and internal teams are blaming each other',
+                'Steering committee papers are not producing decisions',
+                'The team is working without a credible delivery path',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-warm-800">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-warm-700 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What I assess</h3>
+              <ul class="space-y-2">
+                {[
+                  'Governance structure and decision-making effectiveness',
+                  'Delivery confidence across workstreams and milestones',
+                  'Vendor and contract performance against obligations',
+                  'Financial position and forecast-to-complete accuracy',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What you receive</h3>
+              <ul class="space-y-2">
+                {[
+                  'Written health assessment with findings and root cause analysis',
+                  'Realistic recovery options with implications of each',
+                  'Recovery roadmap with sequenced actions and owners',
+                  'Vendor remediation framework where applicable',
+                  'Steering committee reset briefing for executive communication',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Typical engagement shape</h3>
+            <p class="text-warm-800 leading-relaxed">
+              Most recovery engagements begin with a rapid assessment - typically one to two weeks of structured review - followed by an embedded advisory period during which the recovery is actively managed. The split between assessment and embedded support depends on program complexity, how far the situation has deteriorated, and how much direct PM involvement is needed to restore delivery confidence.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-lg bg-warm-100 border border-warm-200">
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-2">When to enquire</h3>
+            <p class="text-warm-800 text-sm leading-relaxed">
+              Enquire when the program is no longer progressing under its own momentum and normal management is not resolving the underlying issues. The earlier recovery support is brought in, the more options remain available. Waiting until a program is in formal escalation limits what can be done.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/contact?service=project-recovery"
+              class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Enquire about project recovery
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-warm-200" />
+
+  <!-- Enterprise Technology Delivery -->
+  <section id="enterprise-delivery" class="section scroll-mt-16">
+    <div class="container">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-8">Enterprise Technology Delivery</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Common symptoms</h3>
+            <ul class="space-y-2">
+              {[
+                'The program lacks a senior PM who can hold vendors accountable',
+                'Scope keeps expanding without clear authorisation',
+                'Architecture decisions are being made without delivery oversight',
+                'Multiple workstreams are not coordinated',
+                'Benefits are unlikely to be realised without structured delivery management',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-warm-800">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-warm-700 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What I assess</h3>
+              <ul class="space-y-2">
+                {[
+                  'Program structure and workstream coordination model',
+                  'Vendor accountability and contract management effectiveness',
+                  'Scope control and change management governance',
+                  'Benefits realisation planning and tracking rigour',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What you receive</h3>
+              <ul class="space-y-2">
+                {[
+                  'Senior PM embedded in the program to manage delivery',
+                  'Vendor accountability framework and contract management oversight',
+                  'Integrated program plan covering all workstreams',
+                  'Change control process and scope governance structure',
+                  'Benefits realisation plan aligned to investment approval',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Typical engagement shape</h3>
+            <p class="text-warm-800 leading-relaxed">
+              Enterprise delivery engagements are typically structured as embedded advisory - ongoing senior PM presence across the program lifecycle, scaled to the level of complexity and the maturity of the internal team. This can range from two days per week to near full-time, depending on what the program needs and what existing capability exists. Engagements are scoped after an initial assessment of the situation.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-lg bg-warm-100 border border-warm-200">
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-2">When to enquire</h3>
+            <p class="text-warm-800 text-sm leading-relaxed">
+              Enquire when a significant technology program is starting or in progress and does not have the senior delivery management it needs to stay on track. This is also the right engagement type when a program is operating across multiple vendors or workstreams without clear coordination.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/contact?service=enterprise-delivery"
+              class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Enquire about enterprise delivery
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-warm-200" />
+
+  <!-- Procurement Governance -->
+  <section id="procurement" class="section scroll-mt-16">
+    <div class="container">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-8">Procurement Governance</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Common symptoms</h3>
+            <ul class="space-y-2">
+              {[
+                'A restricted tender needs to be designed and run',
+                'An evaluation process needs to be defensible under scrutiny',
+                'A BAFO process needs to be managed fairly',
+                'A procurement recommendation needs delegate approval documentation',
+                'Evaluation records are incomplete or inconsistent',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-warm-800">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-warm-700 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What I assess</h3>
+              <ul class="space-y-2">
+                {[
+                  'Procurement strategy and tender design fitness for purpose',
+                  'Evaluation framework probity and defensibility',
+                  'Evaluator guidance and consistency of scoring',
+                  'Delegate approval documentation completeness',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What you receive</h3>
+              <ul class="space-y-2">
+                {[
+                  'Restricted tender design and RFP documentation',
+                  'Weighted evaluation framework with criteria and scoring guides',
+                  'Evaluator briefing pack and conflict of interest declarations',
+                  'BAFO process design and comparative evaluation structure',
+                  'Procurement recommendation report and delegate approval documentation',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Typical engagement shape</h3>
+            <p class="text-warm-800 leading-relaxed">
+              Procurement engagements are typically scoped around a specific process - a single restricted tender, a BAFO process, or a delegate approval package. The scope is defined at the outset and work is structured around the procurement timeline. Where a tender process spans several months, involvement is staged across design, evaluation and recommendation phases.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-lg bg-warm-100 border border-warm-200">
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-2">When to enquire</h3>
+            <p class="text-warm-800 text-sm leading-relaxed">
+              Enquire before the tender is released, not after evaluation has started. Getting the evaluation framework right before respondents submit is the critical control point. Correcting a poorly designed evaluation process after responses have been received is significantly harder and introduces probity risk.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/contact?service=procurement"
+              class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Enquire about procurement governance
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-warm-200" />
+
+  <!-- Business Case Development -->
+  <section id="business-case" class="section scroll-mt-16">
+    <div class="container">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-8">Business Case Development</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Common symptoms</h3>
+            <ul class="space-y-2">
+              {[
+                'A significant technology investment needs a business case for delegate approval',
+                'An existing program needs a supplementary business case due to cost overruns',
+                'A strategic options analysis is needed before a decision is made',
+                'The current draft will not survive scrutiny from finance or central agency review',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-warm-800">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-warm-700 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What I assess</h3>
+              <ul class="space-y-2">
+                {[
+                  'Completeness of available evidence and supporting analysis',
+                  'Options analysis rigour and presentation of realistic alternatives',
+                  'Financial modelling accuracy and cost-benefit methodology',
+                  'Alignment to delegate approval and central agency requirements',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What you receive</h3>
+              <ul class="space-y-2">
+                {[
+                  'Full business case structured for delegate approval',
+                  'Options analysis with financial and operational implications',
+                  'Cost-benefit model with assumptions clearly documented',
+                  'Benefits realisation plan aligned to the recommended option',
+                  'Executive summary suitable for board or committee presentation',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Typical engagement shape</h3>
+            <p class="text-warm-800 leading-relaxed">
+              Business case engagements are scoped around the specific document and approval requirement. A first-pass business case typically takes four to six weeks depending on the availability of source information and the complexity of the investment. Supplementary cases for programs already underway can often be completed more quickly. The engagement includes structured workshops to gather the information needed, and iterative drafting with the client.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-lg bg-warm-100 border border-warm-200">
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-2">When to enquire</h3>
+            <p class="text-warm-800 text-sm leading-relaxed">
+              Enquire before a draft has been produced internally, if possible. Rebuilding a business case that has already been written around a predetermined conclusion is harder than building one correctly from the outset. If a draft already exists, enquire early enough that material changes can be made before it is submitted for approval.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/contact?service=business-case"
+              class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Enquire about business case development
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-warm-200" />
+
+  <!-- Steering Committee Reporting -->
+  <section id="reporting" class="section scroll-mt-16">
+    <div class="container">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-8">Steering Committee Reporting</h2>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Common symptoms</h3>
+            <ul class="space-y-2">
+              {[
+                'The committee receives long reports that do not produce decisions',
+                'RAG ratings are inflated and do not reflect actual program state',
+                'Risks are listed but not escalated appropriately',
+                'The committee is surprised by problems that should have been visible',
+                'Meeting time is spent understanding status rather than making decisions',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-warm-800">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-warm-700 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What I assess</h3>
+              <ul class="space-y-2">
+                {[
+                  'Current reporting format and decision-readiness of information',
+                  'RAG rating criteria and consistency of application',
+                  'Risk escalation process and committee response patterns',
+                  'Committee terms of reference and governance mandate clarity',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">What you receive</h3>
+              <ul class="space-y-2">
+                {[
+                  'Redesigned status report format focused on decisions and exceptions',
+                  'RAG rating criteria guide with clear application rules',
+                  'Risk escalation framework with defined thresholds',
+                  'Committee terms of reference review and reset',
+                  'Reporting cycle and preparation process documentation',
+                ].map((item) => (
+                  <li class="flex items-start gap-2.5 text-warm-800 text-sm">
+                    <svg class="w-4 h-4 text-ochre-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-3">Typical engagement shape</h3>
+            <p class="text-warm-800 leading-relaxed">
+              Reporting engagements are typically discrete and deliverable-scoped. The work involves reviewing the current reporting structure, working with the program team to understand what information the committee actually needs, and producing a redesigned reporting framework. This can usually be completed in two to four weeks, with an optional period of embedded support to bed in the new format across the first one or two reporting cycles.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-lg bg-warm-100 border border-warm-200">
+            <h3 class="text-sm font-semibold text-warm-700 uppercase tracking-wider mb-2">When to enquire</h3>
+            <p class="text-warm-800 text-sm leading-relaxed">
+              Enquire when the committee has raised concerns about the quality of information it receives, or when the program team is spending significant effort on reporting that is not producing governance value. This engagement is often the right starting point for a broader governance reset.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/contact?service=reporting"
+              class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+            >
+              Enquire about steering committee reporting
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section-alt">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl lg:text-3xl font-bold text-warm-900 mb-4">Send An Enquiry</h2>
+      <p class="text-warm-700 mb-8">
+        Describe your situation and what you need. Engagements are scoped after an initial conversation. A response will come within one business day.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-7 py-3.5 text-base font-medium text-white bg-warm-800 hover:bg-warm-900 rounded-md transition-colors"
+      >
+        Send an enquiry
+      </a>
+    </div>
+  </section>
+</Layout>

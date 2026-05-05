@@ -1,0 +1,110 @@
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Warm editorial palette */
+  --color-warm-50: #faf8f5;
+  --color-warm-100: #f3efe9;
+  --color-warm-200: #e8e2d8;
+  --color-warm-700: #5c504a;
+  --color-warm-800: #3d3029;
+  --color-warm-900: #2a241f;
+  --color-warm-950: #1c1712;
+
+  /* Ochre accent */
+  --color-ochre-300: #e8b070;
+  --color-ochre-400: #d4954a;
+  --color-ochre-600: #b8763a;
+  --color-ochre-700: #9e6130;
+
+  /* Navy - kept for backward compatibility */
+  --color-navy-50: #f0f4ff;
+  --color-navy-100: #dce6ff;
+  --color-navy-200: #b9cefc;
+  --color-navy-300: #8cacf8;
+  --color-navy-400: #5d86f1;
+  --color-navy-500: #3561e8;
+  --color-navy-600: #2748cc;
+  --color-navy-700: #1f38a4;
+  --color-navy-800: #1a2d7e;
+  --color-navy-900: #152260;
+  --color-navy-950: #0d1540;
+
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-serif: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  --font-size-display: 3.5rem;
+  --font-size-display-sm: 2.5rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-warm-50 text-warm-900;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    @apply text-warm-900 font-semibold leading-tight;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @apply text-warm-900 font-semibold leading-tight;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ochre-600;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-alt {
+    @apply py-16 lg:py-24 bg-warm-100;
+  }
+
+  .prose-lavelle {
+    @apply prose prose-stone max-w-none;
+    @apply prose-headings:font-semibold prose-headings:text-warm-900;
+    @apply prose-a:text-ochre-600 prose-a:no-underline hover:prose-a:underline;
+    @apply prose-strong:text-warm-900;
+    @apply prose-code:text-ochre-700 prose-code:bg-warm-100 prose-code:px-1 prose-code:rounded;
+    @apply prose-blockquote:border-l-ochre-600 prose-blockquote:text-warm-700;
+  }
+}
+
+/* Pagefind search UI overrides */
+#search {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--color-ochre-600);
+  --pagefind-ui-text: var(--color-warm-900);
+  --pagefind-ui-background: var(--color-warm-50);
+  --pagefind-ui-border: var(--color-warm-200);
+  --pagefind-ui-tag: var(--color-warm-100);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 6px;
+  --pagefind-ui-font: var(--font-sans);
+}

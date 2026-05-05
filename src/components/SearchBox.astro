@@ -1,0 +1,29 @@
+---
+// Pagefind search component
+// Pagefind index is generated at build time: npm run pagefind
+// The /pagefind/ directory must exist in dist/ before this component works
+---
+
+<div id="search-container" class="w-full">
+  <div id="search"></div>
+</div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof PagefindUI !== 'undefined') {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        excerptLength: 15,
+        resetStyles: false,
+      });
+    } else {
+      document.getElementById('search').innerHTML =
+        '<p class="text-sm text-slate-500">Search is available after the site is built. Run <code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">npm run build</code> to generate the search index.</p>';
+    }
+  });
+</script>
