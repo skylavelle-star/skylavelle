@@ -11,7 +11,6 @@ Vercel project: `skylavelle` under `sky-lavelles-projects`
 - **TypeScript** - strict mode via `astro/tsconfigs/strict`
 - **MDX** - articles in `src/content/articles/` with Zod schema in `src/content/config.ts`
 - **Pagefind** - search index built post-build (`npm run pagefind`); only indexes pages with `data-pagefind-body`
-- **Lemon Squeezy** - checkout overlay via `lemon.js`; loaded only on pages with buy buttons via `<script slot="head">`
 - **Web3Forms** - contact form handler (key: `dc7b04fa-6e86-415e-8d01-1fe332b4bf21`)
 - **Google Analytics** - GA4, injected in Layout when `PUBLIC_GA_ID` is set
 - **@fontsource-variable/inter** - self-hosted Inter Variable font, imported in `global.css`
@@ -53,16 +52,18 @@ docs/
   web-strategy.md
 ```
 
+## Architecture note
+
+Sky Lavelle is the personal brand and content site. All commerce (templates, free tools, paid products) lives on **lavelleptyltd.com.au**. URLs like `/templates/*` and `/free-tools` on this site 301-redirect to Lavelle Pty Ltd at the Vercel edge (see `vercel.json`). Do not add product or template pages here — add them to the Lavelle Pty Ltd project instead.
+
 ## Active components
 
 | Component | Used by |
 |---|---|
 | `ArticleCard.astro` | articles/index, index |
-| `BuyButton.astro` | template product pages, templates/index |
-| `DocumentMockup.astro` | index, templates/*, about |
 | `Footer.astro` | Layout |
 | `Header.astro` | Layout |
-| `Hero.astro` | service detail pages, contact, newsletter, free-tools |
+| `Hero.astro` | service detail pages, contact |
 | `RelatedResourceCTA.astro` | article pages |
 | `SearchBox.astro` | articles/index |
 | `SEO.astro` | Layout |
@@ -83,10 +84,10 @@ import { site, products, newsletterUrl, lsEnabled } from '../config/site';
 | `PUBLIC_SITE_URL` | Set | `https://skylavelle.com.au` |
 | `PUBLIC_BEEHIIV_PUBLICATION_ID` | Empty | Not yet configured |
 | `PUBLIC_BEEHIIV_SIGNUP_URL` | Empty | Set this when Beehiiv goes live |
-| `PUBLIC_LS_PROJECT_RECOVERY_PACK` | Set | `https://skylavelle.lemonsqueezy.com/buy/1023963` |
-| `PUBLIC_LS_BUSINESS_CASE_PACK` | Set | `https://skylavelle.lemonsqueezy.com/buy/1023994` |
-| `PUBLIC_LS_PROCUREMENT_PACK` | Set | `https://skylavelle.lemonsqueezy.com/buy/1024000` |
-| `PUBLIC_LS_STEERING_COMMITTEE_PACK` | Set | `https://skylavelle.lemonsqueezy.com/buy/1024002` |
+| `PUBLIC_LS_PROJECT_RECOVERY_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
+| `PUBLIC_LS_BUSINESS_CASE_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
+| `PUBLIC_LS_PROCUREMENT_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
+| `PUBLIC_LS_STEERING_COMMITTEE_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
 
 ## Adding content
 
@@ -95,18 +96,11 @@ import { site, products, newsletterUrl, lsEnabled } from '../config/site';
 2. Add required frontmatter (see `src/content/config.ts` for schema)
 3. Run `npm run build` - the article auto-appears in listing and RSS
 
-### New product/template page
-1. Create `src/pages/templates/product-name.astro`
-2. Import `BuyButton` and add `<script slot="head" src="https://assets.lemonsqueezy.com/lemon.js" defer></script>`
-3. Add checkout URL env var and update `src/config/site.ts`
+### New product or template
+Add it to the Lavelle Pty Ltd project, not here. If a marketing entry point is needed on Sky Lavelle, link out with an absolute `https://lavelleptyltd.com.au/...` URL.
 
 ### Activating Beehiiv
 Set `PUBLIC_BEEHIIV_SIGNUP_URL` in `.env` and Vercel. All newsletter CTAs auto-update.
-
-### Activating a new Lemon Squeezy product
-1. Add env var to `.env` and Vercel
-2. Add to `products` object in `src/config/site.ts`
-3. Update relevant product page to read the new var
 
 ## Analytics events
 
@@ -118,25 +112,12 @@ GA4 events fire via data attributes - no JS changes needed for most tracking:
 
 | Event | Where fired |
 |---|---|
-| `newsletter_signup_click` | Newsletter CTAs |
-| `resource_download_click` | Free Tools CTAs |
-| `product_view` | Product page load (inline script) |
-| `product_buy_click` | Buy Now buttons |
+| `newsletter_signup_click` | Newsletter CTAs (newsletter, index, article pages) |
+| `resource_download_click` | Free-tool CTAs on article pages |
+| `product_view` | Article-page product CTA exposure |
 | `contact_form_submit` | Contact form success |
-| `advisory_offer_click` | Advisory review cards |
+| `advisory_offer_click` | Advisory review cards (start-here, contact) |
 | `start_here_card_click` | Start Here page cards |
-
-## Lemon Squeezy checkout
-
-The `lemon.js` overlay script is loaded **only** on pages that use buy buttons (via `<script slot="head">`):
-- `src/pages/index.astro`
-- `src/pages/templates/index.astro`
-- `src/pages/templates/project-recovery-pack.astro`
-- `src/pages/templates/enterprise-technology-business-case-pack.astro`
-- `src/pages/templates/procurement-evaluation-pack.astro`
-- `src/pages/templates/steering-committee-reporting-pack.astro`
-
-All buy links need `class="lemonsqueezy-button"` for the overlay to trigger.
 
 ## Deployment
 
@@ -151,7 +132,7 @@ All buy links need `class="lemonsqueezy-button"` for the overlay to trigger.
 
 Deploy by committing changes and running `git push origin main`. Vercel builds and publishes automatically (~13s). Never use `vercel --prod --yes` — the GitHub integration handles all deploys.
 
-Vercel reads `vercel.json` for cache headers. After any Lemon Squeezy or Beehiiv config change, also update Vercel env vars:
+Vercel reads `vercel.json` for cache headers and the cross-domain 301 redirects to Lavelle Pty Ltd. After any Beehiiv config change, also update Vercel env vars:
 
 ```bash
 echo "value" | vercel env add VAR_NAME production
@@ -160,9 +141,10 @@ echo "value" | vercel env add VAR_NAME production
 ## Thank-you pages
 
 Configure redirect URLs in each service after deployment:
-- Lemon Squeezy: set redirect to `https://skylavelle.com.au/thank-you/product/`
 - Beehiiv: set redirect to `https://skylavelle.com.au/thank-you/newsletter/`
 - Web3Forms contact: already redirects to `/thank-you/contact/`
+
+`/thank-you/product` is 301-redirected via `vercel.json` to the Lavelle Pty Ltd thank-you flow. `/thank-you/resource` and `/thank-you/newsletter` render locally and are noindexed.
 
 ## Writing rules
 
