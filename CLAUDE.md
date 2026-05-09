@@ -54,7 +54,9 @@ docs/
 
 ## Architecture note
 
-Sky Lavelle is the personal brand and content site. All commerce (templates, free tools, paid products) lives on **lavelleptyltd.com.au**. URLs like `/templates/*` and `/free-tools` on this site 301-redirect to Lavelle Pty Ltd at the Vercel edge (see `vercel.json`). Do not add product or template pages here — add them to the Lavelle Pty Ltd project instead.
+Sky Lavelle is the personal brand and content site. All commerce (templates, free tools, paid products) lives on **lavelleptyltd.com.au**. URLs like `/templates/*` and `/free-tools` on this site 301-redirect to Lavelle Pty Ltd at the Vercel edge (see `vercel.json`). Do not add product or template pages here - add them to the Lavelle Pty Ltd project instead.
+
+There is no newsletter on this site. Beehiiv integration and all newsletter CTAs were removed. If a newsletter is reintroduced later, expect to add a new env var, update `src/config/site.ts`, and add CTAs back to `index.astro`, `articles/[...slug].astro`, and `Footer.astro`.
 
 ## Active components
 
@@ -73,7 +75,7 @@ Sky Lavelle is the personal brand and content site. All commerce (templates, fre
 **Always read env vars from `src/config/site.ts`**, never directly from `import.meta.env` in pages. This keeps all config in one place.
 
 ```typescript
-import { site, products, newsletterUrl, lsEnabled } from '../config/site';
+import { site, analytics } from '../config/site';
 ```
 
 **Current env vars** (set in `.env` and Vercel project settings):
@@ -82,12 +84,6 @@ import { site, products, newsletterUrl, lsEnabled } from '../config/site';
 |---|---|---|
 | `PUBLIC_GA_ID` | Set | `G-RLSZQESRGS` |
 | `PUBLIC_SITE_URL` | Set | `https://skylavelle.com.au` |
-| `PUBLIC_BEEHIIV_PUBLICATION_ID` | Empty | Not yet configured |
-| `PUBLIC_BEEHIIV_SIGNUP_URL` | Empty | Set this when Beehiiv goes live |
-| `PUBLIC_LS_PROJECT_RECOVERY_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
-| `PUBLIC_LS_BUSINESS_CASE_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
-| `PUBLIC_LS_PROCUREMENT_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
-| `PUBLIC_LS_STEERING_COMMITTEE_PACK` | Legacy | No longer read by source; commerce moved to Lavelle Pty Ltd |
 
 ## Adding content
 
@@ -99,20 +95,16 @@ import { site, products, newsletterUrl, lsEnabled } from '../config/site';
 ### New product or template
 Add it to the Lavelle Pty Ltd project, not here. If a marketing entry point is needed on Sky Lavelle, link out with an absolute `https://lavelleptyltd.com.au/...` URL.
 
-### Activating Beehiiv
-Set `PUBLIC_BEEHIIV_SIGNUP_URL` in `.env` and Vercel. All newsletter CTAs auto-update.
-
 ## Analytics events
 
 GA4 events fire via data attributes - no JS changes needed for most tracking:
 
 ```html
-<a href="..." data-ga-event="product_buy_click" data-ga-label="Recovery Pack">
+<a href="..." data-ga-event="advisory_offer_click" data-ga-label="Project recovery">
 ```
 
 | Event | Where fired |
 |---|---|
-| `newsletter_signup_click` | Newsletter CTAs (newsletter, index, article pages) |
 | `resource_download_click` | Free-tool CTAs on article pages |
 | `product_view` | Article-page product CTA exposure |
 | `contact_form_submit` | Contact form success |
@@ -132,19 +124,13 @@ GA4 events fire via data attributes - no JS changes needed for most tracking:
 
 Deploy by committing changes and running `git push origin main`. Vercel builds and publishes automatically (~13s). Never use `vercel --prod --yes` — the GitHub integration handles all deploys.
 
-Vercel reads `vercel.json` for cache headers and the cross-domain 301 redirects to Lavelle Pty Ltd. After any Beehiiv config change, also update Vercel env vars:
-
-```bash
-echo "value" | vercel env add VAR_NAME production
-```
+Vercel reads `vercel.json` for cache headers and the cross-domain 301 redirects to Lavelle Pty Ltd.
 
 ## Thank-you pages
 
-Configure redirect URLs in each service after deployment:
-- Beehiiv: set redirect to `https://skylavelle.com.au/thank-you/newsletter/`
-- Web3Forms contact: already redirects to `/thank-you/contact/`
-
-`/thank-you/product` is 301-redirected via `vercel.json` to the Lavelle Pty Ltd thank-you flow. `/thank-you/resource` and `/thank-you/newsletter` render locally and are noindexed.
+- Web3Forms contact: redirects to `/thank-you/contact/` (renders locally, noindexed)
+- `/thank-you/product`: 301-redirected via `vercel.json` to the Lavelle Pty Ltd thank-you flow
+- `/thank-you/resource`: noindexed local page (no current handler points here)
 
 ## Writing rules
 

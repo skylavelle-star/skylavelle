@@ -5,10 +5,8 @@ declare global {
 }
 
 export type AnalyticsEvent =
-  | 'newsletter_signup_click'
   | 'resource_download_click'
   | 'product_view'
-  | 'product_buy_click'
   | 'contact_form_submit'
   | 'advisory_offer_click'
   | 'start_here_card_click';

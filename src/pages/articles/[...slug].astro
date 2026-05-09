@@ -28,7 +28,6 @@ const updatedDate = entry.data.updatedDate
     })
   : null;
 
-const beehiivSignupUrl = import.meta.env.PUBLIC_BEEHIIV_SIGNUP_URL || '/newsletter';
 ---
 
 <Layout
@@ -167,20 +166,6 @@ const beehiivSignupUrl = import.meta.env.PUBLIC_BEEHIIV_SIGNUP_URL || '/newslett
               </a>
             </div>
 
-            <!-- Newsletter signup -->
-            <div class="mt-10 rounded-lg bg-warm-950 p-6">
-              <h2 class="text-base font-semibold text-white mb-2">The Project Recovery Brief</h2>
-              <p class="text-sm text-warm-200 leading-relaxed mb-4">
-                Practical guidance for project managers and technology leaders working through difficult delivery.
-              </p>
-              <a
-                href={beehiivSignupUrl}
-                data-ga-event="newsletter_signup_click"
-                class="inline-flex items-center px-4 py-2.5 text-sm font-medium text-warm-900 bg-white hover:bg-warm-100 rounded-md transition-colors"
-              >
-                Subscribe free
-              </a>
-            </div>
           </div>
 
           <!-- Sidebar -->
