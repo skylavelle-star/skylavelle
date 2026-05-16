@@ -6,6 +6,7 @@
     { "source": "/free-resources", "destination": "https://lavelleptyltd.com.au/free-tools", "permanent": true },
     { "source": "/project-recovery-checklist", "destination": "https://lavelleptyltd.com.au/free-tools/project-recovery-checklist", "permanent": true },
 
+    { "source": "/", "destination": "https://lavelleptyltd.com.au/", "permanent": true },
     { "source": "/:path*", "destination": "https://lavelleptyltd.com.au/:path*", "permanent": true }
   ]
 }
