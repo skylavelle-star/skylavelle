@@ -1,12 +1,17 @@
 {
   "redirects": [
     { "source": "/templates/enterprise-technology-business-case-pack", "destination": "https://lavelleptyltd.com.au/templates/business-case-pack", "permanent": true },
+    { "source": "/templates/enterprise-technology-business-case-pack/", "destination": "https://lavelleptyltd.com.au/templates/business-case-pack", "permanent": true },
     { "source": "/templates/procurement-evaluation-pack", "destination": "https://lavelleptyltd.com.au/templates/procurement-pack", "permanent": true },
+    { "source": "/templates/procurement-evaluation-pack/", "destination": "https://lavelleptyltd.com.au/templates/procurement-pack", "permanent": true },
     { "source": "/templates/steering-committee-reporting-pack", "destination": "https://lavelleptyltd.com.au/templates/steering-committee-pack", "permanent": true },
+    { "source": "/templates/steering-committee-reporting-pack/", "destination": "https://lavelleptyltd.com.au/templates/steering-committee-pack", "permanent": true },
     { "source": "/free-resources", "destination": "https://lavelleptyltd.com.au/free-tools", "permanent": true },
+    { "source": "/free-resources/", "destination": "https://lavelleptyltd.com.au/free-tools", "permanent": true },
     { "source": "/project-recovery-checklist", "destination": "https://lavelleptyltd.com.au/free-tools/project-recovery-checklist", "permanent": true },
+    { "source": "/project-recovery-checklist/", "destination": "https://lavelleptyltd.com.au/free-tools/project-recovery-checklist", "permanent": true },
 
     { "source": "/", "destination": "https://lavelleptyltd.com.au/", "permanent": true },
-    { "source": "/:path*", "destination": "https://lavelleptyltd.com.au/:path*", "permanent": true }
+    { "source": "/:path(.*)", "destination": "https://lavelleptyltd.com.au/:path", "permanent": true }
   ]
 }
